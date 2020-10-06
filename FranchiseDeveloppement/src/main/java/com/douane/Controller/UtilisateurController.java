@@ -64,14 +64,14 @@ public class UtilisateurController {
         return "redirect:list";
     }
  
-    /*
+    
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
-    	AttribuDemande attributionDemande = attributionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
-        model.addAttribute("attributionDemande", attributionDemande);
-        return "updateAttribution";
+    	Utilisateur utilisateur = utilRep.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
+        model.addAttribute("utilisateur", utilisateur);
+        return "updateUtilisateur";
     }
-
+    /*
     @PostMapping("update/{id}")
     public String updateAttribution(@PathVariable("id") long id, @Validated AttribuDemande attributionDemande, BindingResult result,
         Model model) {

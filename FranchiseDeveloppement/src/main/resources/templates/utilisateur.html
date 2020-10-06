@@ -40,6 +40,7 @@
 	                                    <tr th:each="utilisateur : ${utilisateurs}">
 	                                        <td th:text="${utilisateur.nom}"></td>
 	                                        <td th:text="${utilisateur.prenom}"></td>
+	                                        <td th:text="${utilisateur.getRole().nom}"></td>
 	                                        
 	                                        <td><a th:href="@{/utilisateurs/edit/{id}(id=${utilisateur.idUtilisateur})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
 	                                        <td><a th:href="@{/utilisateurs/delete/{id}(id=${utilisateur.idUtilisateur})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
