@@ -15,8 +15,7 @@ public class TraiterDemande extends AttribuDemande{
 		// TODO Auto-generated constructor stub
 	}
 
-	public TraiterDemande(Demande demande, String observation, FEtatDemande etatDemande, FDossier dossier,
-			Agent agentDetenteur, Agent agentReceveur, boolean presence) {
+	public TraiterDemande(Demande demande, String observation, FEtatDemande etatDemande, FDossier dossier, Agent agentDetenteur, Agent agentReceveur, boolean presence) {
 		super(demande, observation, etatDemande, dossier, agentDetenteur, agentReceveur, presence);
 		// TODO Auto-generated constructor stub
 	}

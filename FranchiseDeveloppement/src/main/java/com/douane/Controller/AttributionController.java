@@ -87,7 +87,7 @@ public class AttributionController {
     	if (result.hasErrors()) {
             return "attribuDemande";
         }
-    	demandeMetier.maj(attributionDemande);
+    	//demandeMetier.maj(attributionDemande);
     	attributionRepository.save(attributionDemande);
     	
         return "redirect:list";
