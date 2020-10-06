@@ -12,7 +12,7 @@ import com.douane.model.FEtatDemande;
 
 public interface IDemande {
 	public Demande consulterDemande(Long numeroDemande);
-	public void traiter(Long i,String observation, FEtatDemande etatDemande, FDossier dossier,Agent agentDetenteur, Agent agentReceveur, boolean presence);
+	public void traiter(Long i,String observation, FEtatDemande etatDemande, FDossier dossier, Agent agent, boolean presence);
 	public Page<AttribuDemande> listeAttribuDemande(Long numeroDemande, int page, int size);
 	public void maj(AttribuDemande attributionDemande);
 	
@@ -20,4 +20,8 @@ public interface IDemande {
 	void saveDemande(Demande demande);
 	void dellDemande(Long id);
 	List<Demande> findAllDemande();
+	List<Demande> findAllSorByEtatDemande();
+	List<Demande> findAllSorByDateDemande();
+	List<Demande> findAllSortByBureau();
+	List<Demande> findAllSortByRequerant();
 }

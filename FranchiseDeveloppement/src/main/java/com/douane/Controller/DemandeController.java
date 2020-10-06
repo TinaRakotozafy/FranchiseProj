@@ -91,11 +91,37 @@ public class DemandeController {
     }
 
     @GetMapping("list")
-    public String showUpdateForm(Demande demande, Model model) {
-        model.addAttribute("demandes", demandeRepository.findAll());
+    public String showUpdateForm(Model model) {
+    	List<Demande> demande = demandeMetier.findAllDemande();
+        model.addAttribute("demandes", demande);
         return "demande";
     }
 
+    @RequestMapping("/list_order")
+    public String showUpdateFormOrder(Model model, String order) {
+    	if(order.equals("requerant"))
+    	{
+    		List<Demande> demande = demandeMetier.findAllSortByRequerant();
+            model.addAttribute("demandes", demande);
+    	}
+    	else if(order.equals("bureau"))
+    	{
+    		List<Demande> demande = demandeMetier.findAllSortByBureau();
+            model.addAttribute("demandes", demande);
+    	}
+    	else if(order.equals("etat"))
+    	{
+    		List<Demande> demande = demandeMetier.findAllSorByEtatDemande();
+            model.addAttribute("demandes", demande);
+    	}
+    	else if(order.equals("date"))
+    	{
+    		List<Demande> demande = demandeMetier.findAllSorByDateDemande();
+            model.addAttribute("demandes", demande);
+    	}
+        return "demande";
+    }
+    
     @PostMapping("add")
     public String addDemande(@Validated Demande demande, BindingResult result, Model model, @ModelAttribute("selectType") FTypeFranchise selectType, @ModelAttribute("selectType") FCuo selectCuo) {
     	
