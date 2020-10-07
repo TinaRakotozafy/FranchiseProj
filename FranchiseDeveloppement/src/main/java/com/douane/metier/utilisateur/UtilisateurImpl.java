@@ -3,6 +3,7 @@ package com.douane.metier.utilisateur;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.douane.entite.Utilisateur;
@@ -36,6 +37,9 @@ public class UtilisateurImpl implements IUtilisateur{
 
 	@Override
 	public void saveUtilisateur(Utilisateur utilisateur) {
+		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+		utilisateur.setPassword(bcrypt.encode(utilisateur.getPassword()));
+    	utilRep.save(utilisateur);
 		utilRep.save(utilisateur);
 		
 	}
