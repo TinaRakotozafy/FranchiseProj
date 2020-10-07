@@ -34,6 +34,9 @@ public class AttribuDemande implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idAgentR")
 	private Agent agentReceveur;
+	@ManyToOne
+	@JoinColumn(name="idUtilisateur")
+	private Utilisateur utilisateur;
 	
 	private String observation;
 	
@@ -155,6 +158,14 @@ public class AttribuDemande implements Serializable{
 
 	public void setIdAttribution(Long idAttribution) {
 		this.idAttribution = idAttribution;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 	
 }

@@ -21,6 +21,7 @@ public class Utilisateur implements Serializable{
 	private String login;
 	private String poste;
 	private String password;
+	private int active;
 	@ManyToOne
 	@JoinColumn(name="idRole")
 	private Role role;
@@ -87,5 +88,12 @@ public class Utilisateur implements Serializable{
 		this.password = password;
 		this.role = role;
 	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
+	
 		
 }

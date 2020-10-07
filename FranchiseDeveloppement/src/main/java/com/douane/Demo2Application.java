@@ -25,7 +25,7 @@ import com.douane.repository.MarchandiseRepository;*/
 
 @SpringBootApplication//(scanBasePackages={"com.douane.metier.TypeFranchise.ITypeFranchise"})
 public class Demo2Application /*implements CommandLineRunner*/{
-	/*@Autowired
+	/*@Autowiredjb
 	private ClientRepository clientRepository;
 	@Autowired
 	private FCuoRepository fcuoRepository;

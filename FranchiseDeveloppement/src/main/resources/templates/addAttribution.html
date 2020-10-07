@@ -16,13 +16,13 @@
                 <div class="col-md-6">
                     <form action="#" th:action="@{add}" th:object="${attribuDemande}" method="post">
                     	<div class="form-group col-md-6">
-                                <label for="path" class="col-form-label">Moi</label>
+                               <!--   <label for="path" class="col-form-label">Moi</label>
                                      <select name="agentDetenteur" th:field="*{agentDetenteur}">
     									<option th:each="agentDetenteur : ${selectAgents}" 
         									th:value="${agentDetenteur.getIdAgent()}" 
         									th:text="${agentDetenteur.getRole()}">
         								</option>
-									</select>                           
+									</select>     -->                      
                             </div>
                         <div class="row">
                             
@@ -56,10 +56,10 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="path" class="col-form-label">Envoyer au</label>
-                                     <select name="agentReceveur" th:field="*{agentReceveur}">
-    									<option th:each="agentReceveur : ${selectAgents}" 
-        									th:value="${agentReceveur.getIdAgent()}" 
-        									th:text="${agentReceveur.getRole()}">
+                                     <select name="utilisateur" th:field="*{utilisateur}">
+    									<option th:each="utilisateur : ${selectUtilisateurs}" 
+        									th:value="${utilisateur.getIdUtilisateur()}" 
+        									th:text="${utilisateur.matricule}">
         								</option>
 									</select>                           
                             </div>

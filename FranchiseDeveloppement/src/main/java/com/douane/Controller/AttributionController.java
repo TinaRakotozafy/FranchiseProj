@@ -22,8 +22,10 @@ import com.douane.entite.AttribuDemande;
 import com.douane.entite.Demande;
 import com.douane.entite.FDossier;
 import com.douane.entite.Marchandise;
+import com.douane.entite.Utilisateur;
 import com.douane.metier.IDemande;
 import com.douane.metier.Agent.IAgent;
+import com.douane.metier.utilisateur.IUtilisateur;
 import com.douane.model.FEtatDemande;
 import com.douane.repository.AgentRepository;
 import com.douane.repository.AttributionRepository;
@@ -32,6 +34,8 @@ import com.douane.repository.FDossierRepository;
 @Controller
 @RequestMapping("/attributions/")
 public class AttributionController {
+	@Autowired
+	private IUtilisateur utilMetier;
 	@Autowired
 	private IAgent agentMetier;
 	@Autowired
@@ -55,11 +59,11 @@ public class AttributionController {
     @GetMapping("signup")
     public String showSignUpForm(AttribuDemande attributionDemande, Model model, @ModelAttribute("selectDemande") Demande selectDemande) {
     	List<Demande> selectDemandes = new ArrayList<>();
-    	List<Agent> selectAgents = new ArrayList<>();
+    	List<Utilisateur> selectUtilisateurs = new ArrayList<>();
         selectDemandes = demandeMetier.findAllDemande();
-        selectAgents = agentMetier.findAllAgent();
+        selectUtilisateurs = utilMetier.findAllUtilisateur();
         model.addAttribute("selectDemandes", selectDemandes);
-        model.addAttribute("selectAgents", selectAgents);
+        model.addAttribute("selectUtilisateurs", selectUtilisateurs);
     	return "addAttribution";
     }
     @RequestMapping("/consulterDemande")
