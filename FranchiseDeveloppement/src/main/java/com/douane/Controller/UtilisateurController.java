@@ -27,6 +27,7 @@ import com.douane.entite.Utilisateur;
 import com.douane.metier.IDemande;
 import com.douane.metier.Agent.IAgent;
 import com.douane.metier.Role.IRole;
+import com.douane.metier.utilisateur.IUtilisateur;
 import com.douane.model.FEtatDemande;
 import com.douane.repository.AgentRepository;
 import com.douane.repository.AttributionRepository;
@@ -36,6 +37,8 @@ import com.douane.repository.UtilisateurRepository;
 @Controller
 @RequestMapping("/utilisateurs/")
 public class UtilisateurController {
+	@Autowired
+	private IUtilisateur utilMetier;
 	@Autowired
 	private UtilisateurRepository utilRep;
 	@Autowired
@@ -50,7 +53,7 @@ public class UtilisateurController {
     }
     @GetMapping("list")
     public String showUpdateForm(Utilisateur utilisateur, Model model) {
-        model.addAttribute("utilisateurs", utilRep.findAll());
+        model.addAttribute("utilisateurs", utilMetier.findAllUtilisateur());
         return "utilisateur";
     }
     
@@ -59,7 +62,7 @@ public class UtilisateurController {
     	if (result.hasErrors()) {
             return "attribuDemande";
         }
-    	utilRep.save(utilisateur);
+    	utilMetier.saveUtilisateur(utilisateur);
     	
         return "redirect:list";
     }
@@ -69,27 +72,28 @@ public class UtilisateurController {
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
     	Utilisateur utilisateur = utilRep.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
         model.addAttribute("utilisateur", utilisateur);
+        List<Role> selectRoles = new ArrayList<>();
+    	selectRoles = roleMet.findAllRole();
+        model.addAttribute("selectRoles", selectRoles);
         return "updateUtilisateur";
     }
-    /*
     @PostMapping("update/{id}")
-    public String updateAttribution(@PathVariable("id") long id, @Validated AttribuDemande attributionDemande, BindingResult result,
+    public String updateAttribution(@PathVariable("id") long id, @Validated Utilisateur utilisateur, BindingResult result,
         Model model) {
         if (result.hasErrors()) {
-            attributionDemande.setIdAttribution(id);
-            return "updateAttribution";
+            utilisateur.setIdUtilisateur(id);
+            return "updateUtilisateur";
         }
         
-        attributionRepository.save(attributionDemande);
-        model.addAttribute("attributions", attributionRepository.findAll());
-        return "attribuDemande";
+        utilMetier.updateUtilisateur(utilisateur, id);
+        model.addAttribute("utilisateurs", utilMetier.findAllUtilisateur());
+        return "utilisateur";
     }
-*/
     @GetMapping("delete/{id}")
     public String deleteAttribution(@PathVariable("id") long id, Model model) {
-    	Utilisateur utilisateur = utilRep.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
-    	utilRep.delete(utilisateur);
-        model.addAttribute("utilisateurs", utilRep.findAll());
+    	//Utilisateur utilisateur = utilRep.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
+    	utilMetier.dellUtilisateur(id);
+        model.addAttribute("utilisateurs", utilMetier.findAllUtilisateur());
         return "utilisateur";
     }
 }

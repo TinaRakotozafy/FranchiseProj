@@ -28,8 +28,11 @@
 	                            <table class="table table-striped table-responsive-md">
 	                                <thead>
 	                                    <tr>
+	                                    <th>Nom</th>
+	                                    <th>Prénom</th>
 	                                    <th>Matricule</th>
 	                                    <th>Login</th>
+	                                    <th>Password</th>
 	                                    <th>Poste</th>
 	                                    <th>Role</th>
 	                                    
@@ -39,8 +42,11 @@
 	                                </thead>
 	                                <tbody>
 	                                    <tr th:each="utilisateur : ${utilisateurs}">
+	                                    	<td th:text="${utilisateur.nom}"></td>
+	                                    	<td th:text="${utilisateur.prenom}"></td>
 	                                        <td th:text="${utilisateur.matricule}"></td>
 	                                        <td th:text="${utilisateur.login}"></td>
+	                                        <td th:text="${utilisateur.password}"></td>
 	                                        <td th:text="${utilisateur.poste}"></td>
 	                                        <td th:text="${utilisateur.getRole().nom}"></td>
 	                                        

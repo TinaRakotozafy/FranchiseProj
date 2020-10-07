@@ -15,6 +15,8 @@ public class Utilisateur implements Serializable{
 	@SequenceGenerator (name = "generator_utilisateur", sequenceName = "U_SEQ", allocationSize = 1) 
 	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "generator_utilisateur")
 	private Long idUtilisateur;
+	private String nom;
+	private String prenom;
 	private String matricule;
 	private String login;
 	private String poste;
@@ -46,8 +48,8 @@ public class Utilisateur implements Serializable{
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public Role getPassword() {
-		return role;
+	public String getPassword() {
+		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
@@ -62,20 +64,28 @@ public class Utilisateur implements Serializable{
 	public void setPoste(String poste) {
 		this.poste = poste;
 	}
-	public Utilisateur(String matricule, String nom,  Role role, String password) {
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	public Utilisateur(String nom, String prenom, String matricule, String login, String poste, String password,
+			Role role) {
 		super();
+		this.nom = nom;
+		this.prenom = prenom;
 		this.matricule = matricule;
-		this.login = nom;
-		this.role = role;
-		this.password = password;
-	}	
-
-	public Utilisateur(String matricule, String nom,  Role role, String password, String poste) {
-		super();
-		this.matricule = matricule;
-		this.login = nom;
-		this.role = role;
+		this.login = login;
 		this.poste = poste;
 		this.password = password;
-	}	
+		this.role = role;
+	}
+		
 }
