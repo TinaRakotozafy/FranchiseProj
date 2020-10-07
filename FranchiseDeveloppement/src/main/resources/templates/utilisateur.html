@@ -30,6 +30,7 @@
 	                                    <tr>
 	                                    <th>Matricule</th>
 	                                    <th>Login</th>
+	                                    <th>Poste</th>
 	                                    <th>Role</th>
 	                                    
 	                                        <th>Edit</th>
@@ -40,6 +41,7 @@
 	                                    <tr th:each="utilisateur : ${utilisateurs}">
 	                                        <td th:text="${utilisateur.matricule}"></td>
 	                                        <td th:text="${utilisateur.login}"></td>
+	                                        <td th:text="${utilisateur.poste}"></td>
 	                                        <td th:text="${utilisateur.getRole().nom}"></td>
 	                                        
 	                                        <td><a th:href="@{/utilisateurs/edit/{id}(id=${utilisateur.idUtilisateur})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>

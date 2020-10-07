@@ -17,6 +17,8 @@ public class Utilisateur implements Serializable{
 	private Long idUtilisateur;
 	private String matricule;
 	private String login;
+	private String poste;
+	private String password;
 	@ManyToOne
 	@JoinColumn(name="idRole")
 	private Role role;
@@ -44,14 +46,36 @@ public class Utilisateur implements Serializable{
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	public Role getPassword() {
+		return role;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Utilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Utilisateur(String matricule, String nom,  Role role) {
+	public String getPoste() {
+		return poste;
+	}
+	public void setPoste(String poste) {
+		this.poste = poste;
+	}
+	public Utilisateur(String matricule, String nom,  Role role, String password) {
 		super();
 		this.matricule = matricule;
 		this.login = nom;
 		this.role = role;
+		this.password = password;
+	}	
+
+	public Utilisateur(String matricule, String nom,  Role role, String password, String poste) {
+		super();
+		this.matricule = matricule;
+		this.login = nom;
+		this.role = role;
+		this.poste = poste;
+		this.password = password;
 	}	
 }
