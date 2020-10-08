@@ -100,7 +100,8 @@ public class AttributionController {
     	if (result.hasErrors()) {
             return "attribuDemande";
         }
-    	//demandeMetier.maj(attributionDemande);
+    	//Update etat_demande
+    	demandeMetier.maj(attributionDemande);
     	
     	//Getting utilisateur envoyeur
     	String login = auth.getName();

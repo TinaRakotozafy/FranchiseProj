@@ -14,7 +14,7 @@ public interface IDemande {
 	public Demande consulterDemande(Long numeroDemande);
 	public void traiter(Long i,String observation, FEtatDemande etatDemande, FDossier dossier, Agent agent, boolean presence);
 	public Page<AttribuDemande> listeAttribuDemande(Long numeroDemande, int page, int size);
-	//public void maj(AttribuDemande attributionDemande);
+	public void maj(AttribuDemande attributionDemande);
 	
 	void updateDemande(Demande demande, Long id);
 	void saveDemande(Demande demande);

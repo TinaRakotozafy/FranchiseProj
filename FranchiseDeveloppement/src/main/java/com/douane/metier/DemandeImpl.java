@@ -51,7 +51,7 @@ public class DemandeImpl implements IDemande {
 		PageRequest pageRequest = PageRequest.of(page, size);
 		return attributionRepository.listeAttributionDemande(numeroDemande, pageRequest);
 	}
-	/*@Override
+	
 	public void maj(AttribuDemande attributionDemande) {
 		Demande demande = attributionDemande.getDemande();
 		Agent agentReceveur = attributionDemande.getAgentReceveur();
@@ -59,9 +59,8 @@ public class DemandeImpl implements IDemande {
 		FEtatDemande etatDemande = attributionDemande.getEtatDemande();
 		boolean presence = attributionDemande.isPresence();
 		demande.setEtatDemande(etatDemande);
-		demande.setAgent(agent);
 		demande.setPresence(presence);
-	}*/
+	}
 
 	@Override
 	public void updateDemande(Demande demande, Long id) {
