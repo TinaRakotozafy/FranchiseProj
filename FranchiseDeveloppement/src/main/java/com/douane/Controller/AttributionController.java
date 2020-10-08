@@ -84,8 +84,14 @@ public class AttributionController {
         return "attribuDemande";
     }
     @GetMapping("list")
-    public String showUpdateForm(AttribuDemande attributionDemande, Model model) {
-        model.addAttribute("attributions", attributionRepository.findAll());
+    public String showUpdateForm(AttribuDemande attributionDemande, Model model, Authentication auth) {
+        //model.addAttribute("attributions", attributionRepository.findAll());
+    	String login = auth.getName();
+    	Utilisateur utilisateur = utilMetier.findByLogin(login);
+    	List<AttribuDemande> listAttribution = new ArrayList<AttribuDemande>();
+    	listAttribution.addAll(attributionRepository.findByUtilisateurEnvoyeur(utilisateur));
+    	listAttribution.addAll(attributionRepository.findByUtilisateur(utilisateur));
+    	model.addAttribute("attributions", listAttribution);
         return "attribuDemande";
     }
 

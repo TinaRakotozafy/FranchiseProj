@@ -56,11 +56,6 @@ public class AttribuDemande implements Serializable{
 	@Column(name="dateop")
 	protected Date date=new Date();
 	
-	
-	/*@Temporal(TemporalType.TIME)
-	@Column(name="timeAttribution")
-	protected Date time;*/
-	
 	@ManyToOne
 	@JoinColumn(name="IdDemande")
 	private Demande demande;
