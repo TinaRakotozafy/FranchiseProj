@@ -99,7 +99,7 @@
                                     	<th>Numero Demande</th>
                                     	<th>Observation</th>
                                     	<th>Etat demande</th>
-                                    	<!-- <th>Agent detenteur</th>  -->                              
+                                    	<th>Utilisateur detenteur</th>                           
                                         <th>Envoyer au</th>
                                         <th>Presence</th>
                                         <th>Date d'attribution</th>
@@ -114,7 +114,8 @@
                                         <td th:text="${attribution.observation}">
                                         <td th:text="${attribution.etatDemande}">
                                         <!--  <td th:text="${attribution.agentDetenteur.role}">-->
-                                        <td th:text="${attribution.getUtilisateur().matricule}">
+                                       <td th:text="${attribution.getUtilisateurEnvoyeur().matricule}">
+                                       <td th:text="${attribution.getUtilisateur().matricule}">
                                         <td th:text="${attribution.demande.presence}">
                                         <td th:text="${attribution.date}">
                                      

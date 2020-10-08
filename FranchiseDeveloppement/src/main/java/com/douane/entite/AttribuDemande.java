@@ -38,6 +38,11 @@ public class AttribuDemande implements Serializable{
 	@JoinColumn(name="idUtilisateur")
 	private Utilisateur utilisateur;
 	
+
+	@ManyToOne
+	@JoinColumn(name="idUtilisateurEnvoyeur")
+	private Utilisateur utilisateurEnvoyeur;
+	
 	private String observation;
 	
 	private FDossier dossier;
@@ -166,6 +171,14 @@ public class AttribuDemande implements Serializable{
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+
+	public Utilisateur getUtilisateurEnvoyeur() {
+		return utilisateurEnvoyeur;
+	}
+
+	public void setUtilisateurEnvoyeur(Utilisateur utilisateurEnvoyeur) {
+		this.utilisateurEnvoyeur = utilisateurEnvoyeur;
 	}
 	
 }

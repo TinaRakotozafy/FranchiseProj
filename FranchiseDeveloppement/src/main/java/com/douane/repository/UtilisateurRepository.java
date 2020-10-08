@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.douane.entite.Utilisateur;
 
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>{
-
+	public Utilisateur findByLogin(String login);
 }

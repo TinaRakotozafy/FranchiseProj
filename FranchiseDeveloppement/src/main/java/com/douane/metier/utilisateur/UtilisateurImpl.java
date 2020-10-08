@@ -56,4 +56,9 @@ public class UtilisateurImpl implements IUtilisateur{
 		return (List<Utilisateur>) utilRep.findAll();
 	}
 
+	@Override
+	public Utilisateur findByLogin(String login) {
+		return utilRep.findByLogin(login);
+	}
+
 }

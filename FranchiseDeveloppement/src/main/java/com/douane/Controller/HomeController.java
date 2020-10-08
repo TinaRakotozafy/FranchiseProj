@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +24,7 @@ import com.douane.entite.FDossier;
 import com.douane.entite.FRequerant;
 import com.douane.entite.FTypeFranchise;
 import com.douane.entite.Marchandise;
+import com.douane.entite.Utilisateur;
 import com.douane.metier.IDemande;
 import com.douane.metier.Dossier.IDossier;
 import com.douane.metier.TypeFranchise.ITypeFranchise;
@@ -91,8 +95,9 @@ public class HomeController {
     }
 
     @GetMapping("list")
-    public String showUpdateForm(Demande demande, Model model) {
+    public String showUpdateForm(Demande demande, Model model, Authentication authentication) {
         model.addAttribute("demandes", demandeRepository.findAll());
+        model.addAttribute("nom", authentication.getName());
         return "index";
     }
 

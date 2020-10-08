@@ -9,4 +9,5 @@ public interface IUtilisateur {
 	void saveUtilisateur(Utilisateur utilisateur);
 	void dellUtilisateur(Long id);
 	List<Utilisateur> findAllUtilisateur();
+	Utilisateur findByLogin(String login);
 }

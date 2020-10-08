@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,7 @@ import com.douane.repository.AgentRepository;
 import com.douane.repository.AttributionRepository;
 import com.douane.repository.DemandeRepository;
 import com.douane.repository.FDossierRepository;
+import com.douane.repository.UtilisateurRepository;
 @Controller
 @RequestMapping("/attributions/")
 public class AttributionController {
@@ -55,6 +57,7 @@ public class AttributionController {
     public AttributionController(AttributionRepository attributionRepository) {
         this.attributionRepository = attributionRepository;
     }
+    
 
     @GetMapping("signup")
     public String showSignUpForm(AttribuDemande attributionDemande, Model model, @ModelAttribute("selectDemande") Demande selectDemande) {
@@ -87,11 +90,16 @@ public class AttributionController {
     }
 
     @PostMapping("add")
-    public String addAttribution(@Validated AttribuDemande attributionDemande, BindingResult result, Model model) {
+    public String addAttribution(@Validated AttribuDemande attributionDemande, BindingResult result, Model model, Authentication auth) {
     	if (result.hasErrors()) {
             return "attribuDemande";
         }
     	//demandeMetier.maj(attributionDemande);
+    	
+    	//Getting utilisateur envoyeur
+    	String login = auth.getName();
+    	Utilisateur utilisateur = utilMetier.findByLogin(login);
+    	attributionDemande.setUtilisateurEnvoyeur(utilisateur);
     	attributionRepository.save(attributionDemande);
     	
         return "redirect:list";
